@@ -7,7 +7,7 @@ public class UserWindowTest {
         UserWindow user = new UserWindow(0);
 
         int limit = 5;
-        int windowSize = 10; // 10 seconds
+        int windowSize = 10;
 
         // Requests 1 through 5 -> all within Window [0-10], should be ALLOWED
         System.out.println("Request at t=1: " + user.allowRequest(1, limit, windowSize));
