@@ -22,9 +22,10 @@ public class RateLimiter {
                 newUser = new UserWindow(currentTime);
             } else if (strategyType == StrategyType.SLIDING_WINDOW) {
                 newUser=new SlidingWindowUser();
-            } else {
-                newUser=new TokenBucketUser(limit,2,currentTime);
-            }
+            }  else {
+            double refillRate = (double) limit / windowSizeInSeconds;
+            newUser = new TokenBucketUser(limit, refillRate, currentTime);
+        }
 
             userLimiters.put(userId, newUser);
         }
